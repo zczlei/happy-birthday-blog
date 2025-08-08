@@ -14,7 +14,7 @@ Any changes you make to your deployed app will be automatically pushed to this r
 
 Your project is live at:
 
-**[https://vercel.com/zczleis-projects/v0-happy-birthday-blog](https://vercel.com/zczleis-projects/v0-happy-birthday-blog)**
+**[https://vercel.com/zczleis-projects/happy-birthday-funny-meme](https://goodmorningmeme.com/blog/birthday-memes.html)**
 
 ## Build your app
 
