@@ -37,8 +37,9 @@ const getBlogById = (id: string): BlogPost | null => {
   const posts: Record<string, BlogPost> = {
     "1": {
       id: 1,
-      title: "The Complete Guide to DeFi Yield Farming",
-      excerpt: "Learn everything you need to know about yield farming in decentralized finance.",
+      title: "Complete Guide to DeFi Yield Farming: Strategies and Risks",
+      excerpt:
+        "Learn everything you need to know about yield farming in DeFi, including the best strategies, risk management, and platform comparisons.",
       content: `
         <p>Yield farming has become one of the most popular ways to earn passive income in the decentralized finance (DeFi) ecosystem. This comprehensive guide will walk you through everything you need to know to get started with yield farming safely and effectively.</p>
         
@@ -93,13 +94,13 @@ const getBlogById = (id: string): BlogPost | null => {
         <h2>Conclusion</h2>
         <p>Yield farming can be a rewarding way to put your crypto assets to work, but it requires careful research and risk management. Start small, learn the basics, and gradually increase your involvement as you become more comfortable with the ecosystem.</p>
       `,
-      tags: ["DeFi", "Yield Farming", "Tutorial", "Beginner"],
-      author: "Alex Thompson",
-      publishedAt: "2024-01-10",
+      tags: ["Tutorial", "DeFi", "Guide"],
+      author: "Alex Chen",
+      publishedAt: "2025-01-15",
       readTime: "12 min read",
-      image: "/blog-defi-guide.png",
+      image: "/blog-defi-yield-farming.png",
       featured: true,
-      views: 24680,
+      views: 2847,
       likes: 892,
       comments: [
         {
@@ -107,7 +108,7 @@ const getBlogById = (id: string): BlogPost | null => {
           author: "CryptoNewbie",
           content:
             "Great guide! This really helped me understand the basics of yield farming. Starting with small amounts as suggested.",
-          publishedAt: "2024-01-11",
+          publishedAt: "2025-01-16",
           likes: 15,
         },
         {
@@ -115,15 +116,16 @@ const getBlogById = (id: string): BlogPost | null => {
           author: "DeFiExpert",
           content:
             "Excellent breakdown of the risks involved. Too many people jump into yield farming without understanding impermanent loss.",
-          publishedAt: "2024-01-11",
+          publishedAt: "2025-01-16",
           likes: 23,
         },
       ],
     },
     "2": {
       id: 2,
-      title: "Smart Contract Security: Best Practices for Developers",
-      excerpt: "Essential security practices every smart contract developer should follow.",
+      title: "Understanding Smart Contract Security: Common Vulnerabilities",
+      excerpt:
+        "Explore the most common smart contract vulnerabilities and learn how to identify and prevent security issues in your blockchain applications.",
       content: `
         <p>Smart contract security is paramount in the blockchain ecosystem. A single vulnerability can lead to millions of dollars in losses. This guide covers essential security practices that every smart contract developer should implement.</p>
         
@@ -149,14 +151,22 @@ const getBlogById = (id: string): BlogPost | null => {
         
         <h2>Testing and Auditing</h2>
         <p>Comprehensive testing and professional audits are crucial for smart contract security. Consider both unit tests and integration tests, and always have your contracts audited by reputable security firms before mainnet deployment.</p>
+        
+        <h2>Tools for Security Analysis</h2>
+        <p>Several tools can help identify vulnerabilities in your smart contracts:</p>
+        <ul>
+          <li><strong>Slither:</strong> Static analysis framework for Solidity</li>
+          <li><strong>Mythril:</strong> Security analysis tool for Ethereum smart contracts</li>
+          <li><strong>Echidna:</strong> Property-based fuzzer for Ethereum smart contracts</li>
+        </ul>
       `,
-      tags: ["Smart Contracts", "Security", "Development", "Best Practices"],
-      author: "Dr. Sarah Kim",
-      publishedAt: "2024-01-08",
+      tags: ["Technical", "Security", "Tutorial"],
+      author: "Sarah Kim",
+      publishedAt: "2025-01-14",
       readTime: "15 min read",
-      image: "/blog-security.png",
+      image: "/blog-smart-contract-security.png",
       featured: false,
-      views: 18340,
+      views: 1923,
       likes: 567,
       comments: [
         {
@@ -164,8 +174,315 @@ const getBlogById = (id: string): BlogPost | null => {
           author: "DevSecOps",
           content:
             "This should be required reading for all smart contract developers. Security should never be an afterthought.",
-          publishedAt: "2024-01-09",
+          publishedAt: "2025-01-15",
           likes: 31,
+        },
+      ],
+    },
+    "3": {
+      id: 3,
+      title: "NFT Market Analysis: Trends and Future Predictions",
+      excerpt:
+        "Deep dive into current NFT market trends, analyzing trading volumes, popular collections, and what the future holds for digital collectibles.",
+      content: `
+        <p>The NFT market has experienced tremendous growth and volatility over the past few years. This comprehensive analysis examines current trends, market dynamics, and future predictions for the digital collectibles space.</p>
+        
+        <h2>Current Market Overview</h2>
+        <p>The NFT market has matured significantly since its explosive growth in 2021. While trading volumes have stabilized, the market has shown signs of increased sophistication and utility-focused projects.</p>
+        
+        <h2>Key Trends Shaping the Market</h2>
+        <h3>1. Utility-Driven NFTs</h3>
+        <p>The market is shifting from purely speculative assets to NFTs that provide real utility, such as access to exclusive communities, gaming assets, or membership benefits.</p>
+        
+        <h3>2. Gaming Integration</h3>
+        <p>Play-to-earn games and blockchain gaming platforms are driving significant NFT adoption, creating sustainable demand for digital assets.</p>
+        
+        <h3>3. Brand Adoption</h3>
+        <p>Major brands are increasingly exploring NFTs for customer engagement, loyalty programs, and digital marketing initiatives.</p>
+        
+        <h2>Market Challenges</h2>
+        <ul>
+          <li>Regulatory uncertainty in various jurisdictions</li>
+          <li>Environmental concerns regarding energy consumption</li>
+          <li>Market saturation and quality concerns</li>
+          <li>Technical barriers for mainstream adoption</li>
+        </ul>
+        
+        <h2>Future Predictions</h2>
+        <p>Looking ahead, we expect to see continued growth in utility-focused NFTs, increased integration with traditional industries, and the development of more sophisticated marketplaces and tools.</p>
+      `,
+      tags: ["Analysis", "NFT", "Market"],
+      author: "Michael Torres",
+      publishedAt: "2025-01-13",
+      readTime: "8 min read",
+      image: "/blog-nft-market-analysis.png",
+      featured: true,
+      views: 3156,
+      likes: 445,
+      comments: [
+        {
+          id: 1,
+          author: "NFTCollector",
+          content:
+            "Great analysis! The shift towards utility-driven NFTs is definitely something I've noticed in my collecting.",
+          publishedAt: "2025-01-14",
+          likes: 18,
+        },
+      ],
+    },
+    "4": {
+      id: 4,
+      title: "Getting Started with Web3 Development: A Beginner's Roadmap",
+      excerpt:
+        "Your complete roadmap to becoming a Web3 developer, covering essential tools, frameworks, and learning resources.",
+      content: `
+        <p>Web3 development represents the future of decentralized applications and blockchain technology. This comprehensive roadmap will guide you through the essential skills, tools, and resources needed to become a proficient Web3 developer.</p>
+        
+        <h2>Understanding the Web3 Stack</h2>
+        <p>Web3 development involves several layers of technology:</p>
+        <ul>
+          <li><strong>Blockchain Layer:</strong> Ethereum, Polygon, Solana, etc.</li>
+          <li><strong>Smart Contracts:</strong> Solidity, Rust, Vyper</li>
+          <li><strong>Frontend:</strong> React, Next.js, Web3.js, Ethers.js</li>
+          <li><strong>Storage:</strong> IPFS, Arweave</li>
+          <li><strong>Indexing:</strong> The Graph Protocol</li>
+        </ul>
+        
+        <h2>Essential Skills to Develop</h2>
+        <h3>1. Blockchain Fundamentals</h3>
+        <p>Start by understanding how blockchains work, consensus mechanisms, and the principles of decentralization.</p>
+        
+        <h3>2. Smart Contract Development</h3>
+        <p>Learn Solidity for Ethereum-based development. Understand contract deployment, testing, and security best practices.</p>
+        
+        <h3>3. Frontend Integration</h3>
+        <p>Master connecting web applications to blockchain networks using libraries like Web3.js or Ethers.js.</p>
+        
+        <h2>Development Tools and Frameworks</h2>
+        <ul>
+          <li><strong>Hardhat:</strong> Development environment for Ethereum</li>
+          <li><strong>Truffle:</strong> Development framework for Ethereum</li>
+          <li><strong>Remix:</strong> Online IDE for smart contract development</li>
+          <li><strong>MetaMask:</strong> Browser wallet for testing</li>
+          <li><strong>Ganache:</strong> Personal blockchain for development</li>
+        </ul>
+        
+        <h2>Learning Path</h2>
+        <ol>
+          <li>Learn blockchain basics and cryptocurrency fundamentals</li>
+          <li>Set up your development environment</li>
+          <li>Write your first smart contract</li>
+          <li>Build a simple DApp frontend</li>
+          <li>Deploy to testnet and mainnet</li>
+          <li>Explore advanced topics like DeFi and NFTs</li>
+        </ol>
+        
+        <h2>Resources for Learning</h2>
+        <ul>
+          <li>CryptoZombies - Interactive Solidity tutorial</li>
+          <li>Ethereum.org documentation</li>
+          <li>OpenZeppelin contracts library</li>
+          <li>Web3 University courses</li>
+          <li>Buildspace projects</li>
+        </ul>
+        
+        <h2>Building Your Portfolio</h2>
+        <p>Create a portfolio of projects that demonstrate your skills:</p>
+        <ul>
+          <li>A simple token contract</li>
+          <li>A decentralized voting system</li>
+          <li>An NFT marketplace</li>
+          <li>A DeFi protocol (lending/borrowing)</li>
+        </ul>
+        
+        <h2>Career Opportunities</h2>
+        <p>Web3 development offers numerous career paths including smart contract developer, DApp developer, blockchain architect, and protocol engineer. The demand for skilled Web3 developers continues to grow across the industry.</p>
+      `,
+      tags: ["Beginner", "Tutorial", "Development"],
+      author: "Emma Rodriguez",
+      publishedAt: "2025-01-12",
+      readTime: "10 min read",
+      image: "/blog-web3-development.png",
+      featured: false,
+      views: 4521,
+      likes: 678,
+      comments: [
+        {
+          id: 1,
+          author: "AspireDev",
+          content: "This roadmap is exactly what I needed! Starting with CryptoZombies as suggested.",
+          publishedAt: "2025-01-13",
+          likes: 25,
+        },
+        {
+          id: 2,
+          author: "CodeNewbie",
+          content: "Great breakdown of the Web3 stack. The learning path is very helpful for beginners.",
+          publishedAt: "2025-01-13",
+          likes: 19,
+        },
+      ],
+    },
+    "5": {
+      id: 5,
+      title: "The Future of Decentralized Autonomous Organizations (DAOs)",
+      excerpt:
+        "Examining the evolution of DAOs, their current challenges, and the potential impact on traditional organizational structures.",
+      content: `
+        <p>Decentralized Autonomous Organizations (DAOs) represent a revolutionary approach to organizational governance and decision-making. This article explores the current state of DAOs, their challenges, and their potential to reshape how we think about organizations.</p>
+        
+        <h2>What are DAOs?</h2>
+        <p>DAOs are organizations governed by smart contracts and operated through collective decision-making by token holders. They aim to eliminate traditional hierarchical structures and enable transparent, democratic governance.</p>
+        
+        <h2>Current State of DAOs</h2>
+        <p>The DAO ecosystem has grown significantly, with various types emerging:</p>
+        <ul>
+          <li><strong>Protocol DAOs:</strong> Governing DeFi protocols like Uniswap and Aave</li>
+          <li><strong>Investment DAOs:</strong> Collective investment vehicles</li>
+          <li><strong>Social DAOs:</strong> Community-driven organizations</li>
+          <li><strong>Service DAOs:</strong> Providing services to the Web3 ecosystem</li>
+        </ul>
+        
+        <h2>Key Challenges</h2>
+        <h3>1. Governance Participation</h3>
+        <p>Low voter turnout and concentration of voting power among large token holders remain significant challenges.</p>
+        
+        <h3>2. Legal Framework</h3>
+        <p>The legal status of DAOs varies by jurisdiction, creating uncertainty for participants and limiting mainstream adoption.</p>
+        
+        <h3>3. Technical Limitations</h3>
+        <p>Current blockchain infrastructure limitations affect the scalability and efficiency of DAO operations.</p>
+        
+        <h2>Innovations and Solutions</h2>
+        <p>The DAO space is rapidly evolving with new governance mechanisms, delegation systems, and legal frameworks being developed to address current limitations.</p>
+        
+        <h2>Future Outlook</h2>
+        <p>DAOs have the potential to transform various industries by enabling more democratic, transparent, and efficient organizational structures. As technology and legal frameworks mature, we expect to see increased adoption across different sectors.</p>
+      `,
+      tags: ["Opinion", "DAO", "Analysis"],
+      author: "David Park",
+      publishedAt: "2025-01-11",
+      readTime: "7 min read",
+      image: "/blog-dao-future.png",
+      featured: false,
+      views: 1876,
+      likes: 234,
+      comments: [
+        {
+          id: 1,
+          author: "DAOEnthusiast",
+          content:
+            "Excellent analysis of the current DAO landscape. The governance participation issue is particularly important.",
+          publishedAt: "2025-01-12",
+          likes: 12,
+        },
+      ],
+    },
+    "6": {
+      id: 6,
+      title: "Layer 2 Solutions Comparison: Optimism vs Arbitrum vs Polygon",
+      excerpt:
+        "Comprehensive comparison of popular Layer 2 scaling solutions, analyzing their features, performance, and ecosystem development.",
+      content: `
+        <p>Layer 2 scaling solutions have become essential for Ethereum's scalability. This comprehensive comparison examines three leading Layer 2 solutions: Optimism, Arbitrum, and Polygon, analyzing their technical approaches, performance, and ecosystem development.</p>
+        
+        <h2>Understanding Layer 2 Solutions</h2>
+        <p>Layer 2 solutions are built on top of Ethereum (Layer 1) to improve scalability, reduce transaction costs, and maintain security. They process transactions off-chain while periodically settling on the main Ethereum network.</p>
+        
+        <h2>Optimism</h2>
+        <h3>Technical Approach</h3>
+        <p>Optimism uses Optimistic Rollups, which assume transactions are valid by default and only run fraud proofs when challenged.</p>
+        
+        <h3>Key Features</h3>
+        <ul>
+          <li>EVM compatibility</li>
+          <li>7-day withdrawal period</li>
+          <li>Lower gas fees than Ethereum mainnet</li>
+          <li>Growing DeFi ecosystem</li>
+        </ul>
+        
+        <h2>Arbitrum</h2>
+        <h3>Technical Approach</h3>
+        <p>Arbitrum also uses Optimistic Rollups but with a more sophisticated fraud proof system called interactive fraud proofs.</p>
+        
+        <h3>Key Features</h3>
+        <ul>
+          <li>Full EVM compatibility</li>
+          <li>Multi-round fraud proofs</li>
+          <li>Arbitrum One and Arbitrum Nova networks</li>
+          <li>Large ecosystem of dApps</li>
+        </ul>
+        
+        <h2>Polygon</h2>
+        <h3>Technical Approach</h3>
+        <p>Polygon uses a Proof-of-Stake sidechain approach with periodic checkpoints to Ethereum.</p>
+        
+        <h3>Key Features</h3>
+        <ul>
+          <li>Fast finality (2-3 seconds)</li>
+          <li>Very low transaction costs</li>
+          <li>Mature ecosystem</li>
+          <li>Multiple scaling solutions (PoS, zkEVM, etc.)</li>
+        </ul>
+        
+        <h2>Performance Comparison</h2>
+        <table>
+          <tr>
+            <th>Metric</th>
+            <th>Optimism</th>
+            <th>Arbitrum</th>
+            <th>Polygon</th>
+          </tr>
+          <tr>
+            <td>TPS</td>
+            <td>~2,000</td>
+            <td>~4,000</td>
+            <td>~7,000</td>
+          </tr>
+          <tr>
+            <td>Finality</td>
+            <td>7 days</td>
+            <td>7 days</td>
+            <td>2-3 seconds</td>
+          </tr>
+          <tr>
+            <td>Gas Costs</td>
+            <td>Low</td>
+            <td>Low</td>
+            <td>Very Low</td>
+          </tr>
+        </table>
+        
+        <h2>Ecosystem Development</h2>
+        <p>All three solutions have vibrant ecosystems with major DeFi protocols, NFT marketplaces, and gaming applications. The choice often depends on specific use case requirements and user preferences.</p>
+        
+        <h2>Conclusion</h2>
+        <p>Each Layer 2 solution has its strengths and trade-offs. Optimism and Arbitrum offer stronger security guarantees through their connection to Ethereum, while Polygon provides faster finality and lower costs. The multi-chain future likely includes all these solutions serving different use cases.</p>
+      `,
+      tags: ["Technical", "Analysis", "Guide"],
+      author: "Lisa Wang",
+      publishedAt: "2025-01-10",
+      readTime: "14 min read",
+      image: "/blog-layer2-comparison.png",
+      featured: true,
+      views: 2634,
+      likes: 389,
+      comments: [
+        {
+          id: 1,
+          author: "L2Researcher",
+          content:
+            "Great comparison! The performance table is particularly useful for developers choosing a Layer 2 solution.",
+          publishedAt: "2025-01-11",
+          likes: 28,
+        },
+        {
+          id: 2,
+          author: "EthDev",
+          content:
+            "This helped me understand the trade-offs between different Layer 2 approaches. Thanks for the detailed analysis!",
+          publishedAt: "2025-01-11",
+          likes: 15,
         },
       ],
     },

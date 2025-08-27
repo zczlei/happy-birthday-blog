@@ -9,7 +9,7 @@ import { ArrowLeft, Clock, User, Eye, Share2, Bookmark, ThumbsUp } from "lucide-
 import Image from "next/image"
 
 interface NewsArticle {
-  id: number
+  id: string
   title: string
   excerpt: string
   content: string
@@ -23,71 +23,48 @@ interface NewsArticle {
   tags: string[]
   views: number
   likes: number
+  url?: string
 }
 
-// Mock data for news articles
-const getNewsById = (id: string): NewsArticle | null => {
-  const articles: Record<string, NewsArticle> = {
-    "1": {
-      id: 1,
-      title: "Bitcoin ETF Approval Sparks Institutional Adoption Wave",
-      excerpt: "Major financial institutions are rushing to offer Bitcoin exposure following recent ETF approvals.",
-      content: `
-        <p>The recent approval of Bitcoin Exchange-Traded Funds (ETFs) has marked a watershed moment for cryptocurrency adoption among institutional investors. Following the Securities and Exchange Commission's landmark decision, major financial institutions have begun integrating Bitcoin exposure into their traditional investment offerings.</p>
-        
-        <h2>Institutional Rush</h2>
-        <p>BlackRock, Fidelity, and other major asset managers have reported unprecedented demand for their Bitcoin ETF products. Within the first week of trading, these funds accumulated over $1 billion in assets under management, signaling strong institutional appetite for regulated cryptocurrency exposure.</p>
-        
-        <h2>Market Impact</h2>
-        <p>The approval has had immediate effects on Bitcoin's price and market dynamics. Trading volumes have increased by 40% since the announcement, with Bitcoin reaching new yearly highs. Analysts predict this institutional influx could drive sustained price appreciation throughout 2024.</p>
-        
-        <h2>Regulatory Clarity</h2>
-        <p>The ETF approval represents a significant shift in regulatory stance toward cryptocurrencies. This development provides the regulatory clarity that many institutional investors have been waiting for before entering the crypto market.</p>
-        
-        <h2>Future Implications</h2>
-        <p>Industry experts believe this is just the beginning of mainstream cryptocurrency adoption. With Bitcoin ETFs now available, discussions have already begun around Ethereum and other cryptocurrency ETF products, potentially opening the door for broader digital asset integration in traditional finance.</p>
-      `,
-      category: "Regulation",
-      author: "Sarah Chen",
-      publishedAt: "2024-01-15",
-      readTime: "5 min read",
-      image: "/news-bitcoin-etf.png",
-      trending: true,
-      source: "CryptoNews",
-      tags: ["Bitcoin", "ETF", "Institutional", "Regulation"],
-      views: 15420,
-      likes: 342,
-    },
-    "2": {
-      id: 2,
-      title: "Ethereum Staking Rewards Hit All-Time High",
-      excerpt: "Ethereum validators are earning record rewards as network activity surges.",
-      content: `
-        <p>Ethereum validators are experiencing unprecedented reward rates as network activity reaches new heights. The combination of increased transaction fees and staking participation has created an optimal environment for validators to maximize their returns.</p>
-        
-        <h2>Record-Breaking Yields</h2>
-        <p>Current staking yields have reached 8.5% APR, the highest since the Ethereum 2.0 merge. This increase is primarily driven by elevated network activity and the deflationary pressure from EIP-1559's fee burning mechanism.</p>
-        
-        <h2>Network Growth</h2>
-        <p>The Ethereum network now has over 1 million validators securing the network, representing more than 32 million ETH staked. This growth demonstrates increasing confidence in Ethereum's proof-of-stake consensus mechanism.</p>
-        
-        <h2>DeFi Renaissance</h2>
-        <p>The surge in staking rewards coincides with renewed interest in DeFi protocols. Total Value Locked (TVL) across Ethereum DeFi protocols has increased by 25% this quarter, driving higher transaction volumes and validator rewards.</p>
-      `,
-      category: "DeFi",
-      author: "Michael Rodriguez",
-      publishedAt: "2024-01-12",
-      readTime: "4 min read",
-      image: "/news-ethereum-staking.png",
-      trending: false,
-      source: "DeFi Weekly",
-      tags: ["Ethereum", "Staking", "DeFi", "Validators"],
-      views: 8930,
-      likes: 156,
-    },
-  }
+const getNewsById = async (id: string): Promise<NewsArticle | null> => {
+  try {
+    const response = await fetch(
+      `https://min-api.cryptocompare.com/data/v2/news/?excludedCategories=Sponsored&feeds=cointelegraph%2Ctheblock%2Cdecrypt&extraParams=Blocksdecoded`,
+    )
 
-  return articles[id] || null
+    if (!response.ok) {
+      throw new Error("Failed to fetch news")
+    }
+
+    const data = await response.json()
+    const article = data.Data?.find((item: any) => item.id === id)
+
+    if (!article) {
+      return null
+    }
+
+    // Transform API data to our interface
+    return {
+      id: article.id,
+      title: article.title,
+      excerpt: article.body?.substring(0, 200) + "..." || "",
+      content: `<p>${article.body || "Content not available."}</p>`,
+      category: article.categories?.split("|")[0] || "Technology",
+      author: article.source_info?.name || "Unknown Author",
+      publishedAt: new Date(article.published_on * 1000).toLocaleDateString(),
+      readTime: `${Math.ceil((article.body?.length || 0) / 200)} min read`,
+      image: article.imageurl ? `https://www.cryptocompare.com${article.imageurl}` : "/crypto-news-collage.png",
+      trending: false,
+      source: article.source_info?.name || "CryptoCompare",
+      tags: article.tags?.split("|").slice(0, 4) || ["Crypto"],
+      views: Math.floor(Math.random() * 10000) + 1000,
+      likes: Math.floor(Math.random() * 500) + 50,
+      url: article.url,
+    }
+  } catch (error) {
+    console.error("Error fetching news article:", error)
+    return null
+  }
 }
 
 const relatedArticles = [
@@ -123,9 +100,14 @@ export default function NewsDetailPage() {
   const [bookmarked, setBookmarked] = useState(false)
 
   useEffect(() => {
-    const articleData = getNewsById(params.id as string)
-    setArticle(articleData)
-    setLoading(false)
+    const fetchArticle = async () => {
+      setLoading(true)
+      const articleData = await getNewsById(params.id as string)
+      setArticle(articleData)
+      setLoading(false)
+    }
+
+    fetchArticle()
   }, [params.id])
 
   if (loading) {
@@ -196,17 +178,28 @@ export default function NewsDetailPage() {
               <Share2 className="h-4 w-4 mr-2" />
               Share
             </Button>
+            {article.url && (
+              <Button variant="outline" size="sm" asChild>
+                <a href={article.url} target="_blank" rel="noopener noreferrer">
+                  Read Original
+                </a>
+              </Button>
+            )}
           </div>
         </div>
 
         {/* Featured Image */}
         <div className="mb-8 rounded-xl overflow-hidden">
           <Image
-            src={article.image || "/placeholder.svg"}
+            src={article.image || "/crypto-news-collage.png"}
             alt={article.title}
             width={800}
             height={400}
             className="w-full h-auto"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement
+              target.src = "/crypto-news-collage.png"
+            }}
           />
         </div>
 
@@ -240,7 +233,7 @@ export default function NewsDetailPage() {
                   <h4 className="font-semibold text-lg">{article.author}</h4>
                   <p className="text-muted-foreground">Senior Crypto Journalist at {article.source}</p>
                   <p className="text-sm text-muted-foreground mt-2">
-                    Covering blockchain technology and cryptocurrency markets for over 5 years.
+                    Covering blockchain technology and cryptocurrency markets.
                   </p>
                 </div>
               </div>
